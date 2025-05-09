@@ -1,0 +1,129 @@
+/* GLOBAL STYLES */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    padding: 40px;
+    max-width: 800px;
+    margin: auto;
+    line-height: 1.6;
+    background-color: #000000;
+    color: #E0E0E0;
+}
+
+hr {
+    border-top: 2px solid rgb(44, 51, 62);
+    margin: auto;
+}
+
+h1 {
+	font-size: 16px;
+}
+
+h2 {
+	text-align: center;
+	color: #E0E0E0;
+	text-shadow: 4px 2px #68453F;
+}
+
+#appTitle {
+	font-style: italic;
+	color: #46B03C;
+}
+
+/* TABLE STYLES */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: transparent;
+    box-shadow: 0 1px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+th, td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+}
+
+th {
+    background-color: #68453F;
+    font-weight: bold;
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+tr:hover {
+    background-color: #33201C;
+    cursor: pointer;
+}
+
+button {
+    background-color: transparent;
+    color: #E0E0E0;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-color: #E0E0E0;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    outline: none;
+    margin: 10px 10px;
+}
+
+/* INPUT STYLES */
+input, textarea {
+    width: 100%;
+    padding: 10px 15px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #333;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+}
+
+input::placeholder, textarea::placeholder {
+    color: #aaa;
+}
+
+.hide {
+	display: none;
+}
+
+.container {
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	align-items: center;
+}
+
+.pair {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 60px;
+  margin: 10px 10px;
+}
+
+.label {
+  padding: 0.7rem;
+  text-align: center;
+}
+
+#mobContainer {
+  display: flex;
+  justify-content: center;
+  align-items: start;
+}
+
+#mobBtn {
+  margin: 2rem 30px;
+}
+
+/* OTHER STYLES */
+.loading-gif {
+    height: 1em;
+    vertical-align: middle;
+}

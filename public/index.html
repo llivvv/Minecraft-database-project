@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- This meta tag ensures that the website renders correctly across different device sizes, enhancing mobile responsiveness. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Link to the external CSS stylesheet. Uncomment if you wish to customize or add styling. -->
+     <link rel="stylesheet" href="styles.css">
+
+    <title>Database Application</title>
+</head>
+<body>
+<!-- ===================================================================================== -->
+<!-- Display the current status of the database connection. -->
+<h1>Database Connection Status:
+    <!-- An in-line placeholder to display connection status. -->
+    <span id="dbStatus"> </span>
+    <!-- A loading GIF, will be hided once get the status. -->
+    <img id="loadingGif" class="loading-gif" src="loading_100px.gif" alt="Loading...">
+</h1>
+
+<h2>Welcome to <span id="appTitle">MineCraft DB</span>!</h2>
+
+<br><hr><br> <!-- ========================================================================= -->
+
+<!--for INSERT, UPDATE, DELETE on PlayerHas-->
+<div class="container">
+    <button id="viewPlayersTable">View All Players</button>
+    <div id="playerSection" class="hide">
+        <table id="allPlayers">
+            <thead>
+            <tr>
+                <th>username</th>
+                <th>user_credentials</th>
+                <th>xp</th>
+                <th>email</th>
+                <th>skin</th>
+                <th>iid</th>
+            </tr>
+            </thead>
+            <tbody id="tbodyAllPlayers">
+            </tbody>
+        </table>
+
+        <h3>Insert</h3>
+        <form id="insertPlayer">
+            Username: <input type="text" name="username" id="insertUsername" placeholder="Enter Username" maxlength="16" required>
+            <br>
+            User Credentials: <input type="text" name="userCredentials" id="insertUserCredentials" placeholder="Enter User Credentials" maxlength="255">
+            <br>
+            XP: <input type="number" name="xp" id="insertXp" placeholder="Enter XP Amount">
+            <br>
+            Email: <input type="text" name="email" id="insertEmail" placeholder="Enter Email" maxlength="255">
+            <br>
+            Skin: <input type="number" name="skin" id="insertSkin" placeholder="Enter Skin Number">
+            <br>
+            IID: <input type="number" name="iid" id="insertIid" placeholder="Enter IID" required>
+
+            <button type="submit">Insert Player</button>
+            <br>
+        </form>
+        <div id="insertResultMsg"></div>
+
+        <h3>Update</h3>
+        <p>The values are case sensitive and if you enter in the wrong case, the update statement will not do
+            anything.</p>
+        <form id="updatePlayerEmailXp">
+            Username: <input type="text" name="username" id="updateUsername" placeholder="Enter Username" maxlength="16" required><br>
+            Email: <input type="text" name="email" id="updateEmail" placeholder="Enter Email" maxlength="255" required><br>
+            XP: <input type="number" name="xp" id="updateXp" placeholder="Enter XP Amount"><br>
+            Skin: <input type="number" name="skin" id="updateSkin" placeholder="Enter Skin Number"><br>
+            <button type="submit">Update Player</button>
+        </form>
+        <div id="updateResultMsg"></div>
+
+        <h3>Delete</h3>
+        <p>The values are case sensitive and if you enter in the wrong case, the delete statement will not do
+            anything.</p>
+        <form id="delPlayer">
+            Username: <input type="text" id="delUsername" placeholder="Enter Username" maxlength="16" required><br>
+            <button type="submit">Delete Player</button>
+        </form>
+        <div id="delPlayerResultMsg"></div>
+    </div>
+</div>
+
+<br><hr><br> <!-- ========================================================================= -->
+
+<!--for PROJECTION on Mob1-->
+<div id="projFormDiv">
+    <h3>Select Mob attributes to view:</h3>
+    <form id="formProjMob">
+        <div id="mobContainer">
+            <div class="pair">
+                <label for="mname" class="label">
+                    <input
+                            type="checkbox"
+                            name="atts"
+                            id="mname"
+                            value="mname"
+                            class="box"
+                    />name</label
+                >
+            </div>
+
+            <div class="pair">
+                <label for="mtexture" class="label">
+                    <input
+                            type="checkbox"
+                            name="atts"
+                            id="mtexture"
+                            value="mtexture"
+                            class="box"
+                    />mob texture</label
+                >
+            </div>
+
+            <div class="pair">
+                <label for="position" class="label">
+                    <input
+                            type="checkbox"
+                            name="atts"
+                            id="position"
+                            value="position"
+                            class="box"
+                    />position</label
+                >
+            </div>
+
+            <div class="pair">
+                <label for="max-health" class="label">
+                    <input
+                            type="checkbox"
+                            name="atts"
+                            id="max-health"
+                            value="max_health"
+                            class="box"
+                    />max health</label
+                >
+            </div>
+
+            <div class="pair">
+                <label for="curr-health" class="label">
+                    <input
+                            type="checkbox"
+                            name="atts"
+                            id="curr-health"
+                            value="current_health"
+                            class="box"
+                    />current health</label
+                >
+            </div>
+
+            <div class="pair">
+                <label for="mspeed" class="label">
+                    <input
+                            type="checkbox"
+                            name="atts"
+                            id="mspeed"
+                            value="movement_speed"
+                            class="box"
+                    />movement speed</label
+                >
+            </div>
+
+            <button type="submit" id="mobBtn">Submit</button>
+        </div>
+    </form>
+
+    <table id="showProjMob" class="hide">
+        <thead>
+        <tr id="trProjMob">
+            <!--Table head, need to be adjusted accordingly to align with your own.-->
+        </tr>
+        </thead>
+        <tbody id="tbodyProjMob"></tbody>
+    </table>
+    <button id="hideMobBtn" class="hide">Close</button>
+</div>
+
+<br><hr><br> <!-- ========================================================================= -->
+
+<!-- for SELECTION -->
+<div id="selectionDiv">
+    <h3>Select Server</h3>
+    <p>The values are case sensitive and if you enter in the wrong case, the selection will not return anything.</p>
+
+    <form id="selectionForm">
+        <div id="selectionContainer">
+            <label for="attribute1">Choose Attribute 1:</label>
+            <br>
+            <select name="attribute" id="attribute1">
+                <option value="IPaddress">IP Address</option>
+                <option value="sname">Server Name</option>
+                <option value="player_capacity">Player Capacity</option>
+            </select>
+            <input type="text" id="condition1" name="condition" placeholder="What should this attribute be equal to?" maxlength="255" required>
+            <br>
+        </div>
+        <button type="submit">Select Server</button>
+        <button id="addCondition">Add Condition</button>
+    </form>
+
+    <table id="selection" class="hide">
+        <thead>
+        <tr>
+            <!--Table head, need to be adjusted accordingly to align with your own.-->
+            <th>IP Address</th>
+            <th>Server Name</th>
+            <th>Player Capacity</th>
+        </tr>
+        </thead>
+        <tbody id="tbodySelection">
+        </tbody>
+    </table>
+</div>
+
+<br><hr><br> <!-- ========================================================================= -->
+
+<!--for DIVISION query-->
+<div class="container">
+    <button id="divAchievementBtn">View Achievements achieved by all players</button>
+    <table id="divAchievement" class="hide">
+        <thead>
+        <tr>
+            <!--Table head, need to be adjusted accordingly to align with your own.-->
+            <th>name</th>
+        </tr>
+        </thead>
+        <tbody id="tbodyDivAchievement">
+        </tbody>
+    </table>
+</div>
+
+<br><hr><br> <!-- ========================================================================= -->
+
+<!--for HAVING query-->
+<div class="container">
+    <button id="havBtn">View Popular Worlds</button>
+    <p>(worlds saved by at least half the players)</p>
+    <table id="having" class="hide">
+        <thead>
+        <tr>
+            <!--Table head, need to be adjusted accordingly to align with your own.-->
+            <th>join_code</th>
+            <th># of Saves</th>
+        </tr>
+        </thead>
+        <tbody id="tbodyHaving">
+        </tbody>
+    </table>
+</div>
+
+<br><hr><br> <!-- ========================================================================= -->
+
+<!--for AGGREGATIONS with GROUP BY-->
+<div class="container">
+    <h3>For each Achievement, view number of Players that have achieved it.</h3>
+    <button id="groupBtn">View</button>
+    <table id="groupBy" class="hide">
+        <thead>
+        <tr>
+            <!--Table head, need to be adjusted accordingly to align with your own.-->
+            <th>Achievement Name</th>
+            <th># of Players That Have Achieved It</th>
+        </tr>
+        </thead>
+        <tbody id="tbodyGroupBy">
+        </tbody>
+    </table>
+</div>
+
+<br><hr><br> <!-- ========================================================================= -->
+
+<!--for NESTED-->
+<div class="container">
+    <h3>For each achievement, show the average progress only if that average is greater than the overall
+        average progress of all achievements.</h3>
+    <button id="nestedAggBtn">View Average Progress</button>
+    <table id="nestedAggTable" class="hide">
+        <thead>
+        <tr>
+            <th>Achievement</th>
+            <th>Average Progress</th>
+        </tr>
+        </thead>
+        <tbody id="tbodyNestAgg"></tbody>
+    </table>
+</div>
+
+<br><hr><br> <!-- ========================================================================= -->
+
+<!--for JOIN on PlayerHas and Achieve-->
+<div>
+    <h3>Player Achievements</h3>
+    <form id="joinPlayerAndAchieve">
+        Username: <input type="text" id="joinUsername" placeholder="Enter Username" maxlength="16" required>
+        <button type="submit">Search</button>
+    </form>
+
+    <table id="tableJoinTable" class="hide">
+        <thead>
+        <tr>
+            <th>Username</th>
+            <th>XP</th>
+            <th>Email</th>
+            <th>Achievement Name</th>
+            <th>Date Received</th>
+            <th>Progress</th>
+        </tr>
+        </thead>
+        <tbody id="tbodyJoinResult"></tbody>
+    </table>
+</div>
+
+<br><hr><br> <!-- ========================================================================= -->
+
+
+<!-- ===================================================================================== -->
+<!-- External JavaScript file that contains the functionality/logic for the operations above. -->
+<script src="scripts.js"></script>
+</body>
+</html>
