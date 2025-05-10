@@ -23,3 +23,7 @@
 #### It also models how players explore, interact and change the world around them, from collecting resources to unlocking achievements. 
 
 #### The structure supports gameplay data like player progress, achievement status, server hosting, and item inventories.
+
+#### <hr> 
+
+This project was done in collaboration with Alexi and Yoobeen, for a database course. 
