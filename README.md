@@ -1,7 +1,10 @@
 # 🎮 Minecraft Database
+
 #### Welcome to our Minecraft-inspired database project!
+
 #### This database models the core elements of the game - players, blocks, items, mobs, worlds
-#### It captures how they interact over time using achievements, and servers. 
+
+#### It captures how they interact over time using achievements, and servers.
 
 #### <hr>
 
@@ -19,11 +22,10 @@
 
 📌 **Recipes** used to craft items from blocks
 
-
-#### It also models how players explore, interact and change the world around them, from collecting resources to unlocking achievements. 
+#### It also models how players explore, interact and change the world around them, from collecting resources to unlocking achievements.
 
 #### The structure supports gameplay data like player progress, achievement status, server hosting, and item inventories.
 
-#### <hr> 
+#### <hr>
 
-This project was done in collaboration with Alexi and Yoobeen, for a database course. 
+This project was done in collaboration with Alexi and Yoobeen!
