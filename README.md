@@ -1,5 +1,7 @@
 # 🎮 Minecraft Database
 
+Please refer to https://github.com/llivvv/Minecraft-db instead of this repository. Thank you!
+
 #### Welcome to our Minecraft-inspired database project!
 
 #### This database models the core elements of the game - players, blocks, items, mobs, worlds
